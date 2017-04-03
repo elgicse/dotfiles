@@ -196,3 +196,9 @@ export RLCHOME=/home/elena/Desktop/PhD_Work/00-Analysis/0-Lb2Lcsttaunu/gitlab_re
 # Keep track of my dotfiles in a bare GIT repository, adapted from:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 alias config='/usr/bin/git --git-dir=/home/elena/.cfg/ --work-tree=/home/elena'
+alias .a='config add'
+alias .c='config commit -m'
+alias .ca='config commit -a -m'
+alias .p='config push'
+alias .s='config status'
+
