@@ -179,7 +179,7 @@ alias u="git pull"
 alias rb="git rebase -i"
 alias restore_git_timestamps="git filter-branch -f --env-filter \"GIT_COMMITTER_DATE=\$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE\""
 
-alias wifirestart="bash ~/restart_wifi"
+alias wifirestart="bash ~/.bin/restart_wifi.sh"
 
 
 # EOS installation from https://github.com/elgicse/eos/tree/lambdacstar
