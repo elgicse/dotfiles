@@ -202,3 +202,6 @@ alias .ca='config commit -a -m'
 alias .p='config push'
 alias .s='config status'
 
+# Add $HOME/.bin in PATH and set it first
+export PATH=$HOME/.bin:$PATH
+
