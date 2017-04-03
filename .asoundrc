@@ -1,0 +1,5 @@
+pcm.btheadset {
+        type bluetooth
+        device 88:C6:26:AD:82:CA
+        profile “auto”
+}
