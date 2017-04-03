@@ -1,0 +1,13 @@
+[user]
+	email = elena.graverini@cern.ch
+	name = Elena Graverini
+[push]
+	default = simple
+[core]
+	filemode = false
+[diff]
+	tool = meld
+	external = /home/elena/diff.py
+[alias]
+	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
+
