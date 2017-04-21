@@ -206,3 +206,10 @@ alias .u='config pull'
 # Add $HOME/.bin in PATH and set it first
 export PATH=$HOME/.bin:$PATH
 
+# Look for large files
+find_large(){
+	sudo find / -not \( -path "*/afs" -prune \) -name '*' -size +$1
+}
+alias find-large=find_large
+alias find-500MB="find_large 500M"
+
