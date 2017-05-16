@@ -208,7 +208,7 @@ export PATH=$HOME/.bin:$PATH
 
 # Look for large files
 find_large(){
-	sudo find / -not \( -path "*/afs" -prune \) -name '*' -size +$1
+	sudo find / -not \( -path "*/afs" -prune \) -not \( -path "/media/elena/*" -prune \) -not \( -path "/proc/*" -prune \) -name '*' -size +$1
 }
 alias find-large=find_large
 alias find-500MB="find_large 500M"
