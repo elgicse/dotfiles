@@ -213,3 +213,7 @@ find_large(){
 alias find-large=find_large
 alias find-500MB="find_large 500M"
 
+# CCE scans analysis
+export DISK=/media/elena/58ECC1ADECC1862A/data1_backup/hep/elena
+export CCEHOME=/home/elena/Desktop/PhD_Work/1-TT/STAging
+export LHCBSTYLE=1
