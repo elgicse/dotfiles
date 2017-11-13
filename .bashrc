@@ -122,8 +122,10 @@ export MANPATH=$MANPATH:/home/elena/texlive/2016/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/home/elena/texlive/2016/texmf-dist/doc/info
 export PATH=/home/elena/texlive/2016/bin/x86_64-linux:$PATH
 
-export PYTHIA8=/home/elena/pythia8219
-export PYTHIA8DATA=/xmldoc
+# export PYTHIA8=/home/elena/pythia8219
+# export PYTHIA8DATA=/xmldoc
+
+alias root="root -l"
 
 # Use CERN license for Mathematica when onsite on eduroam
 alias mathematica="ssh -f -L 16286:lxlicen04.cern.ch:16286 egraveri@lxplus.cern.ch sleep 20; mathematica"
@@ -215,5 +217,18 @@ alias find-500MB="find_large 500M"
 
 # CCE scans analysis
 export DISK=/media/elena/58ECC1ADECC1862A/data1_backup/hep/elena
+# Only for travelling!
+export DISK=/home/elena/Desktop/PhD_Work/1-TT/STAging/DISK
 export CCEHOME=/home/elena/Desktop/PhD_Work/1-TT/STAging
 export LHCBSTYLE=1
+# alias rc='g++ `root-config --libs --glibs --cflags --ldflags --auxlibs --auxcflags` -lMinuit -lRooFit -lRooFitCore -lEG'
+compile_root(){
+	output=`echo $1 | sed 's/.C//'`
+	g++ `root-config --cflags --ldflags --auxcflags` -o $output $1 `root-config --glibs --libs --auxlibs` -lMinuit -lRooFit -lRooFitCore -lEG
+}
+alias rc=compile_root
+# Pythia8
+export PYTHIA8=/home/elena/pythia8/pythia8230
+export PATH=$PYTHIA8/bin:$PATH
+export PYTHIA8DATA=`pythia8-config --xmldoc`
+
