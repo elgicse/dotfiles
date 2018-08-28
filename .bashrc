@@ -168,7 +168,7 @@ alias smz="sshfs egraveri@grid-ui.physik.uzh.ch: /home/elena/Desktop/PhD_Work/zu
 alias us="fusermount -u /home/elena/Desktop/PhD_Work/zurich-cluster"
 alias smff="sshfs egraveri@grid-ui.physik.uzh.ch:/disk/data1/hep/elena/data/LBSLNTUPLES_TEMP/FF /home/elena/Desktop/PhD_Work/zurich-cluster"
 
-source /home/elena/root/root-build/bin/thisroot.sh
+source /home/elena/ROOT/root-build/bin/thisroot.sh
 
 
 # Git aliases
@@ -228,7 +228,7 @@ compile_root(){
 }
 alias rc=compile_root
 # Pythia8
-export PYTHIA8=/home/elena/pythia8/pythia8230
-export PATH=$PYTHIA8/bin:$PATH
-export PYTHIA8DATA=`pythia8-config --xmldoc`
+export PYTHIA8=/home/elena/pythia8235
+export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
+# export PYTHIA8DATA=`pythia8-config --xmldoc`
 
