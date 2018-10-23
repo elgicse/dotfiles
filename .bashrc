@@ -232,3 +232,5 @@ export PYTHIA8=/home/elena/pythia8235
 export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
 # export PYTHIA8DATA=`pythia8-config --xmldoc`
 
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+
