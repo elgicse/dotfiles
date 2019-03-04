@@ -128,7 +128,7 @@ export PATH=/home/elena/texlive/2016/bin/x86_64-linux:$PATH
 alias root="root -l"
 
 # Use CERN license for Mathematica when onsite on eduroam
-alias mathematica="ssh -f -L 16286:lxlicen04.cern.ch:16286 egraveri@lxplus.cern.ch sleep 20; mathematica"
+# alias mathematica="ssh -f -L 16286:lxlicen04.cern.ch:16286 egraveri@lxplus.cern.ch sleep 20; mathematica"
 alias cdship="cd /home/elena/Desktop/PhD-Work/0-SHIP/0-SHiP-toys"
 alias lx="ssh -Y egraveri@lxplus.cern.ch"
 alias lxs="ssh -Y egrave@lxplus.cern.ch"
@@ -233,4 +233,7 @@ export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
 # export PYTHIA8DATA=`pythia8-config --xmldoc`
 
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+
+# EPFL cluster
+alias el="ssh -Y graverin@lphelc1a.epfl.ch"
 
