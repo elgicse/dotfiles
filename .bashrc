@@ -168,7 +168,7 @@ alias smz="sshfs egraveri@grid-ui.physik.uzh.ch: /home/elena/Desktop/PhD_Work/zu
 alias us="fusermount -u /home/elena/Desktop/PhD_Work/zurich-cluster"
 alias smff="sshfs egraveri@grid-ui.physik.uzh.ch:/disk/data1/hep/elena/data/LBSLNTUPLES_TEMP/FF /home/elena/Desktop/PhD_Work/zurich-cluster"
 
-source /home/elena/ROOT/root-build/bin/thisroot.sh
+# source /home/elena/ROOT/root-build/bin/thisroot.sh
 
 
 # Git aliases
@@ -236,4 +236,19 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
 
 # EPFL cluster
 alias el="ssh -Y graverin@lphelc1a.epfl.ch"
+
+# Touchpad
+synclient TapButton1=1 TapButton2=3 TapButton3=2
+
+# aliBuild
+export PATH=$HOME/.local/bin:$PATH
+
+# SHiP software, i.e. ROOT 6.14.?? & python2
+export ALIBUILD_WORK_DIR=$HOME/Work/Software/SHiPBuild/sw
+alias shipenv="alienv enter --shellrc FairShip/latest-master-fairship"
+alias buildship="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --defaults fairship build $HOME/Work/Software/SHiPBuild/FairShip -j 1"
+alias buildship-fetch="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --defaults fairship build $HOME/Work/Software/SHiPBuild/FairShip -j 1 --fetch-repos"
+
+# R(Kpipi) analysis, i.e. ROOT 6.16.00 & python 3.6
+alias rkenv="pipenv shell $HOME/Work/LHCb/ewp-rkpipi/fit/mass_fit init.sh"
 
