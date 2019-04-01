@@ -250,5 +250,5 @@ alias buildship="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --defaults 
 alias buildship-fetch="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --defaults fairship build $HOME/Work/Software/SHiPBuild/FairShip -j 1 --fetch-repos"
 
 # R(Kpipi) analysis, i.e. ROOT 6.16.00 & python 3.6
-alias rkenv="pipenv shell $HOME/Work/LHCb/ewp-rkpipi/fit/mass_fit init.sh"
+alias rkenv="pipenv shell . $HOME/Work/LHCb/ewp-rkpipi/fit/mass_fit/init.sh"
 
