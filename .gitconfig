@@ -4,10 +4,11 @@
 [push]
 	default = simple
 [core]
-	filemode = false
+	fileMode = false
+	autocrlf = false
 [diff]
 	tool = meld
-	external = /home/elena/diff.py
+	external = /home/elena/Apps/diff.py
 [alias]
 	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
 
@@ -15,3 +16,9 @@
 	tool = meld
 [difftool]
 	prompt = false
+[color]
+	ui = auto
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+
+

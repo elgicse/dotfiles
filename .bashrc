@@ -185,8 +185,8 @@ alias wifirestart="bash ~/.bin/restart_wifi.sh"
 
 
 # EOS installation from https://github.com/elgicse/eos/tree/lambdacstar
-export PATH=$PATH:/opt/pkgs/eos/bin
-export PYTHONPATH=$PYTHONPATH:/opt/pkgs/eos/lib/python2.7/site-packages
+# export PATH=$PATH:/opt/pkgs/eos/bin
+# export PYTHONPATH=$PYTHONPATH:/opt/pkgs/eos/lib/python2.7/site-packages
 
 # Zurich sshfs mount point
 export zurich_cluster_mountpoint=/home/elena/Desktop/PhD_Work/zurich-cluster
@@ -236,6 +236,7 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
 
 # EPFL cluster
 alias el="ssh -Y graverin@lphelc1a.epfl.ch"
+alias elb="ssh -Y graverin@lphelc1b.epfl.ch"
 
 # Touchpad
 synclient TapButton1=1 TapButton2=3 TapButton3=2
@@ -250,5 +251,56 @@ alias buildship="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --defaults 
 alias buildship-fetch="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --defaults fairship build $HOME/Work/Software/SHiPBuild/FairShip -j 1 --fetch-repos"
 
 # R(Kpipi) analysis, i.e. ROOT 6.16.00 & python 3.6
-alias rkenv="pipenv shell . $HOME/Work/LHCb/ewp-rkpipi/fit/mass_fit/init.sh"
+export RKPIPI=$HOME/Work/LHCb/ewp-rkpipi
+# alias rkenv="pipenv shell . $RKPIPI/fit/mass_fit/init.sh"
+rkenv(){
+	PYTHONPATH=/home/elena/.local/lib/python3.6/site-packages:/usr/local/lib/python3.6/dist-packages
+	ROOTSYS=/home/elena/Work/Software/ROOT/root-install-py3; export ROOTSYS
+	#PATH=$ROOTSYS/bin:$PATH; export PATH
+	#PYTHONPATH=$ROOTSYS/lib:$PYTHONPATH; export PYTHONPATH
+	#LD_LIBRARY_PATH=$ROOTSYS/lib:$LD_LIBRARY_PATH; export LD_LYBRARY_PATH
+	#DYLD_LIBRARY_PATH=$ROOTSYS/lib:$DYLD_LIBRARY_PATH; export DYLD_LIBRARY_PATH
+	#CMAKE_PREFIX_PATH=$ROOTSYS:$CMAKE_PREFIX_PATH; export CMAKE_PREFIX_PATH
+	#JUPYTER_PATH=$ROOTSYS/etc/notebook:$JUPITER_PATH; export JUPITER_PATH
+	#SHLIB_PATH=$ROOTSYS/lib:$SHLIB_PATH; export SHLIB_PATH
+	#LIBPATH=$ROOTSYS/lib:$LIBPATH; export LIBPATH
+	source $ROOTSYS/bin/thisroot.sh
+	RKPIPI=/home/elena/Work/LHCb/ewp-rkpipi; export RKPIPI
+	RKPIPI_NTUPLES=$RKPIPI/DATA; export RKPIPI_NTUPLES
+	PYTHONPATH=$PYTHONPATH:$RKPIPI; export PYTHONPATH
+}
+
+
+
+. /home/elena/Apps/Torch/torch/install/bin/torch-activate
+
+export PYTHONPATH=$PYTHONPATH
+export CONDA_BASE=/home/elena/Apps/anaconda/anaconda3
+
+anaconda(){
+    # >>> conda init >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$(CONDA_REPORT_ERRORS=false '$CONDA_BASE/bin/conda' shell.bash hook 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        \eval "$__conda_setup"
+    else
+        if [ -f "$CONDA_BASE/etc/profile.d/conda.sh" ]; then
+            . "$CONDA_BASE/etc/profile.d/conda.sh"
+            CONDA_CHANGEPS1=false conda activate base
+        else
+            \export PATH="$CONDA_BASE/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda init <<<
+    
+    # Maybe superfluos?
+    export CONDA=$CONDA_BASE
+    export PATH=$CONDA/bin:$PATH
+    export LD_LIBRARY_PATH=$CONDA/lib:$LD_LIBRARY_PATH
+    # export PYTHONPATH=$PYTHONPATH:$CONDA_BASE/lib/python3.7
+}
+alias ac=anaconda
+
+alias elv="sudo openconnect vpn.epfl.ch -u graverin@epfl.ch"
 
