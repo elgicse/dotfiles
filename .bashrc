@@ -130,7 +130,7 @@ alias root="root -l"
 # Use CERN license for Mathematica when onsite on eduroam
 # alias mathematica="ssh -f -L 16286:lxlicen04.cern.ch:16286 egraveri@lxplus.cern.ch sleep 20; mathematica"
 alias cdship="cd /home/elena/Desktop/PhD-Work/0-SHIP/0-SHiP-toys"
-alias lx="ssh -Y egraveri@lxplus.cern.ch"
+alias lx="ssh -Y egraveri@lxplus7.cern.ch"
 alias lxs="ssh -Y egrave@lxplus.cern.ch"
 alias afs="kinit egraveri && aklog && cd /afs/cern.ch/user/e/egraveri/"
 alias afss="kinit egrave && aklog && cd /afs/cern.ch/user/e/egrave/"
@@ -252,6 +252,8 @@ alias buildship-fetch="aliBuild -c $HOME/Work/Software/SHiPBuild/shipdist/ --def
 
 # R(Kpipi) analysis, i.e. ROOT 6.16.00 & python 3.6
 export RKPIPI=$HOME/Work/LHCb/ewp-rkpipi
+export WS=$RKPIPI/DATA
+
 # alias rkenv="pipenv shell . $RKPIPI/fit/mass_fit/init.sh"
 rkenv(){
 	PYTHONPATH=/home/elena/.local/lib/python3.6/site-packages:/usr/local/lib/python3.6/dist-packages
@@ -274,7 +276,7 @@ rkenv(){
 
 . /home/elena/Apps/Torch/torch/install/bin/torch-activate
 
-export PYTHONPATH=$PYTHONPATH
+export PYTHONPATH=$RKPIPI:$PYTHONPATH
 export CONDA_BASE=/home/elena/Apps/anaconda/anaconda3
 
 anaconda(){
@@ -303,4 +305,43 @@ anaconda(){
 alias ac=anaconda
 
 alias elv="sudo openconnect vpn.epfl.ch -u graverin@epfl.ch"
+alias elg="ssh -Y graverin@lphepc118.epfl.ch"
+# uses automatic tunnelling, see .ssh/config
+alias imac="ssh icosone@dyndns.cern.ch"
+
+# Kill all sync daemons
+ksync(){
+    killall /opt/Druva/inSync/lib/inSync
+    killall /opt/ownCloud/cernbox/bin/cernbox
+    killall /home/elena/.CloudStation/CloudStation.app/bin/cloud-drive-daemon
+    killall /home/elena/.CloudStation/CloudStation.app/bin/cloud-drive-connect
+    killall /home/elena/.CloudStation/CloudStation.app/bin/cloud-drive-ui
+}
+
+# Save power in battery mode
+bsave(){
+    # Kill sync clients
+    ksync
+    # Settings suggested by powertop
+    ### VM writeback timeout
+    echo '1500' | sudo tee '/proc/sys/vm/dirty_writeback_centisecs'
+    ### Runtime PM for PCI Device Intel Corporation Sunrise Point-LP PCI Express Root Port #1
+    echo 'auto' | sudo tee '/sys/bus/pci/devices/0000:00:1c.0/power/control'
+    # Reduce screen backlight
+    # from https://askubuntu.com/a/469040/329328
+    echo 315 | sudo tee /sys/class/backlight/intel_backlight/brightness
+    # Block bluetooth
+    # from https://askubuntu.com/questions/380096/turn-on-off-bluetooth-from-shell-not-from-applet
+    rfkill block bluetooth
+    killall /usr/lib/x86_64-linux-gnu/indicator-bluetooth/indicator-bluetooth-service
+    # Kill HP applet system tray indicator
+    kill -9 $(pgrep -f hp-systray)
+}
+
+sanitize_pdf(){
+	output=`echo $1 | sed 's/.pdf/_small.pdf/g'`
+	gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$output -c .setpdfwrite -f $1
+}
+alias spf=sanitize_pdf
+
 
