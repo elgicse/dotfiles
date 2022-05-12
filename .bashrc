@@ -347,4 +347,5 @@ alias spf=sanitize_pdf
 # SSH jumps
 alias bol="ssh -XY -J egraveri@lnxbo.bo.infn.it egraveri@lhcbtest1"
 alias ple="ssh -X -J egraveri@lxplus.cern.ch,egraveri@lbgw egraveri@plecs01"
+alias pld="ssh -X -J egraveri@lxplus.cern.ch,egraveri@lbgw egraveri@pldcs01"
 
