@@ -349,3 +349,7 @@ alias bol="ssh -XY -J egraveri@lnxbo.bo.infn.it egraveri@lhcbtest1"
 alias ple="ssh -X -J egraveri@lxplus.cern.ch,egraveri@lbgw egraveri@plecs01"
 alias pld="ssh -X -J egraveri@lxplus.cern.ch,egraveri@lbgw egraveri@pldcs01"
 
+# Login to raspberry pi (ciliegia)
+alias rpi="ssh elena@88.167.238.222 -p49194"
+
+
